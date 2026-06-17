@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mathilde Sison</title>
+<meta name="description" content="Mathilde Sison. Finance and operations for high growth technology companies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400;1,8..60,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS — Sequoia structure x Anthropic palette ── */
+:root {
+  --ivory:      #FAF9F5;   /* Anthropic's exact cream */
+  --ivory-deep: #F0EDE4;
+  --white:      #FFFFFF;
+  --slate:      #141413;   /* Anthropic's exact near-black */
+  --slate-2:    #5E5D59;
+  --slate-3:    #9B9A95;
+  --clay:       #1A8754;   /* vivid standout green accent */
+  --clay-deep:  #126B41;
+  --clay-soft:  rgba(26,135,84,0.12);
+  --clay-pale:  #E8F5EE;   /* light green surface, replaces dark sections */
+  --clay-pale-2:#DCEEE3;
+  --sep:        rgba(20,20,19,0.10);
+  --sep-dark:   rgba(255,255,255,0.12);
+
+  --dark:    #141413;
+  --dark-2:  #232220;
+
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 980px;
+
+  --sans:  "Public Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --serif: "Source Serif 4", Georgia, serif;
+  --mono:  "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+  --ease:   cubic-bezier(0.25,0.46,0.45,0.94);
+  --spring: cubic-bezier(0.34,1.56,0.64,1);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:var(--sans);
+  font-size:18px; line-height:1.62; letter-spacing:-0.008em;
+  color:var(--slate); background:var(--ivory);
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+a { color:inherit; text-decoration:none; }
+img { display:block; max-width:100%; }
+h1,h2,h3,h4 { font-weight:700; letter-spacing:-0.025em; line-height:1.08; }
+strong { font-weight:600; }
+button { font-family:var(--sans); cursor:pointer; border:none; background:none; }
+:focus-visible { outline:2px solid var(--clay); outline-offset:3px; border-radius:4px; }
+
+.wrap { max-width:1040px; margin:0 auto; padding:0 32px; }
+.wrap-wide { max-width:1280px; margin:0 auto; padding:0 32px; }
+section { padding:120px 0; }
+@media(max-width:700px){ section{ padding:80px 0; } }
+
+/* ── NAV ──────────────────────────────────────── */
+header.nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  height:64px; background:rgba(250,249,245,0.92);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--sep);
+}
+.nav-inner {
+  max-width:1280px; margin:0 auto; padding:0 32px;
+  height:100%; display:flex; align-items:center; justify-content:space-between;
+}
+.nav-logo { font-size:1.0625rem; font-weight:700; color:var(--slate); letter-spacing:-0.02em; }
+.nav-links { display:flex; gap:34px; }
+.nav-links a {
+  font-size:0.875rem; color:var(--slate); opacity:0.62;
+  letter-spacing:-0.005em; transition:opacity 0.2s;
+}
+.nav-links a:hover { opacity:1; }
+.nav-cta {
+  font-size:0.875rem; font-weight:500; color:var(--white);
+  background:var(--slate); border-radius:var(--r-pill);
+  padding:10px 22px; letter-spacing:-0.005em;
+  transition:background 0.2s, transform 0.15s var(--spring);
+}
+.nav-cta:hover { background:var(--clay); transform:scale(1.03); }
+@media(max-width:760px){ .nav-links{ display:none; } }
+
+/* ── HERO ─────────────────────────────────────── */
+.hero { background:var(--ivory); padding:108px 0 0; }
+.hero-top { text-align:center; padding:0 24px 52px; }
+.hero-eyebrow {
+  font-family:var(--mono); font-size:0.75rem; font-weight:500;
+  letter-spacing:0.16em; text-transform:uppercase; color:var(--clay);
+  margin-bottom:24px;
+}
+.hero-name {
+  font-size:clamp(2.8rem,7.5vw,5.4rem);
+  font-weight:700; letter-spacing:-0.035em; line-height:1.0;
+  color:var(--slate); margin-bottom:20px;
+}
+.hero-role {
+  font-size:clamp(1.05rem,1.8vw,1.3rem);
+  font-weight:400; color:var(--slate-2);
+  letter-spacing:-0.008em; max-width:46ch; margin:0 auto 32px;
+  line-height:1.5;
+}
+.hero-social { display:flex; justify-content:center; gap:12px; }
+.hero-social a {
+  width:38px; height:38px; border-radius:50%;
+  border:1px solid var(--sep);
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.85rem; color:var(--slate-2); background:var(--white);
+  transition:border-color 0.2s, color 0.2s, transform 0.15s var(--spring);
+}
+.hero-social a:hover { border-color:var(--clay); color:var(--clay); transform:translateY(-2px); }
+
+.hero-split {
+  display:grid; grid-template-columns:1fr 1.05fr;
+  border-top:1px solid var(--sep);
+  min-height:580px;
+}
+@media(max-width:880px){ .hero-split{ grid-template-columns:1fr; min-height:auto; } }
+.hero-photo-col { position:relative; overflow:hidden; background:var(--slate); }
+.hero-photo-col img {
+  width:100%; height:100%; object-fit:cover; object-position:50% 20%;
+  display:block; min-height:480px;
+}
+@media(max-width:880px){ .hero-photo-col img{ min-height:420px; } }
+.hero-quote-col {
+  display:flex; align-items:center; justify-content:center;
+  padding:64px; border-left:1px solid var(--sep);
+  background:var(--ivory);
+}
+@media(max-width:880px){ .hero-quote-col{ border-left:none; border-top:1px solid var(--sep); padding:52px 32px; } }
+.hero-quote-col blockquote {
+  font-family:var(--serif); font-style:italic; font-weight:400;
+  font-size:clamp(1.5rem,2.8vw,2rem); line-height:1.46; letter-spacing:-0.012em;
+  color:var(--slate); text-align:center; max-width:32ch;
+}
+
+.circle-word { position:relative; display:inline-block; white-space:nowrap; }
+.circle-word svg { position:absolute; left:-8%; top:-20%; width:116%; height:145%; pointer-events:none; overflow:visible; }
+
+/* ── TICKER ───────────────────────────────────── */
+.ticker-wrap { background:var(--clay-pale); overflow:hidden; padding:14px 0; user-select:none; border-top:1px solid var(--sep); border-bottom:1px solid var(--sep); }
+.ticker-track { display:flex; width:max-content; animation:ticker 36s linear infinite; }
+.ticker-track:hover { animation-play-state:paused; }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.ticker-item {
+  display:flex; align-items:center; gap:26px; padding:0 26px;
+  font-family:var(--mono); font-size:0.6875rem; font-weight:500; letter-spacing:0.08em;
+  text-transform:uppercase; color:var(--clay-deep); opacity:0.55; white-space:nowrap;
+  transition:opacity 0.2s;
+}
+.ticker-item:hover { opacity:1; }
+.tdot { width:4px; height:4px; border-radius:50%; background:var(--clay); flex-shrink:0; }
+
+/* ── SECTION LABEL ────────────────────────────── */
+.section-label {
+  font-family:var(--mono); font-size:0.75rem; font-weight:500; letter-spacing:0.12em;
+  text-transform:uppercase; color:var(--slate-3); margin-bottom:48px;
+  display:flex; align-items:center; gap:12px;
+}
+.section-label::before { content:''; width:20px; height:1.5px; background:var(--clay); flex-shrink:0; }
+
+/* ── ABOUT ────────────────────────────────────── */
+#about { background:var(--white); }
+.about-grid { display:grid; grid-template-columns:300px 1fr; gap:84px; align-items:start; }
+@media(max-width:880px){ .about-grid{ grid-template-columns:1fr; gap:44px; } }
+.about-left h2 {
+  font-size:clamp(2.1rem,3.8vw,2.9rem); letter-spacing:-0.03em; line-height:1.1;
+  margin-bottom:32px; color:var(--slate);
+}
+.tag-label { font-family:var(--mono); font-size:0.6875rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--slate-3); margin-bottom:14px; }
+.tags { display:flex; flex-wrap:wrap; gap:8px; }
+.tag {
+  font-size:0.8125rem; padding:7px 15px; border:1px solid var(--sep);
+  border-radius:var(--r-pill); color:var(--slate-2); background:var(--ivory);
+  transition:border-color 0.2s, color 0.2s;
+}
+.tag:hover { border-color:var(--clay); color:var(--clay-deep); }
+.about-right p { font-size:1.3rem; font-weight:400; line-height:1.68; color:var(--slate); margin:0 0 1.25em; letter-spacing:-0.006em; }
+.about-right p:last-child { margin:0; }
+.pull-quote {
+  margin:44px 0; padding:30px 34px; background:var(--clay-soft);
+  border-left:3px solid var(--clay);
+}
+.pull-quote blockquote {
+  font-family:var(--serif); font-style:italic; font-weight:400;
+  font-size:clamp(1.2rem,2.2vw,1.55rem); line-height:1.46; letter-spacing:-0.012em; color:var(--slate);
+}
+.pull-quote cite { display:block; margin-top:14px; font-size:0.8125rem; font-style:normal; color:var(--slate-3); }
+
+/* ── CREDENTIALS BAR ──────────────────────────── */
+.cred-bar { background:var(--clay-pale); }
+.cred-grid { display:grid; grid-template-columns:repeat(4,1fr); border-left:1px solid var(--sep); }
+@media(max-width:640px){ .cred-grid{ grid-template-columns:repeat(2,1fr); } }
+.cred-cell { padding:38px 26px; border-right:1px solid var(--sep); border-bottom:1px solid var(--sep); transition:background 0.2s; }
+.cred-cell:hover { background:var(--clay-pale-2); }
+.cred-cell .ck { font-family:var(--mono); font-size:0.625rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--clay-deep); opacity:0.65; margin-bottom:10px; }
+.cred-cell .cv { font-size:1.05rem; font-weight:600; color:var(--slate); letter-spacing:-0.012em; line-height:1.3; }
+.cred-cell .cv.accent { color:var(--clay-deep); }
+
+/* ── EXPERIENCE ───────────────────────────────── */
+#experience { background:var(--ivory); }
+.xp-list { max-width:920px; }
+.xp-item { display:grid; grid-template-columns:200px 1fr; gap:48px; padding:38px 0; border-bottom:1px solid var(--sep); }
+.xp-item:first-child { border-top:1px solid var(--sep); }
+@media(max-width:680px){ .xp-item{ grid-template-columns:1fr; gap:10px; } }
+.xp-meta .org { font-size:1.1rem; font-weight:700; color:var(--slate); letter-spacing:-0.015em; }
+.xp-meta .dt { font-size:0.8125rem; color:var(--slate-3); margin-top:6px; display:block; }
+.xp-meta .lc { font-size:0.8125rem; color:var(--slate-3); margin-top:2px; display:block; }
+.xp-body .role { font-size:0.9375rem; font-weight:600; color:var(--clay-deep); margin-bottom:14px; }
+.xp-body ul { list-style:none; }
+.xp-body li { position:relative; padding-left:18px; margin-bottom:10px; font-size:1.0625rem; line-height:1.62; color:var(--slate); }
+.xp-body li::before { content:''; position:absolute; left:0; top:0.72em; width:4px; height:4px; border-radius:50%; background:var(--clay); opacity:0.55; }
+
+/* ── WORK — interactive visuals ───────────────── */
+#work { background:var(--white); }
+.work-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--sep); border:1px solid var(--sep); margin-bottom:2px; }
+@media(max-width:760px){ .work-grid{ grid-template-columns:1fr; } }
+.work-card {
+  background:var(--ivory); padding:0; display:flex; flex-direction:column;
+  cursor:pointer; text-align:left; border:none; overflow:hidden;
+  transition:background 0.2s;
+}
+.work-card:hover { background:var(--white); }
+.work-card.dark { background:var(--clay-pale); }
+.work-card.dark:hover { background:var(--clay-pale-2); }
+.work-card.full { grid-column:1/-1; }
+.wc-visual { position:relative; height:180px; overflow:hidden; background:var(--ivory-deep); }
+.work-card.dark .wc-visual { background:var(--clay-pale-2); }
+.wc-visual svg { width:100%; height:100%; display:block; }
+.wc-body-wrap { padding:32px 32px 36px; display:flex; flex-direction:column; flex:1; }
+.wc-label { font-family:var(--mono); font-size:0.6875rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--slate-3); margin-bottom:14px; }
+.work-card.dark .wc-label { color:var(--clay-deep); opacity:0.7; }
+.wc-title { font-size:1.35rem; font-weight:700; color:var(--slate); letter-spacing:-0.02em; line-height:1.16; margin-bottom:10px; }
+.work-card.dark .wc-title { color:var(--slate); }
+.wc-body { font-size:1rem; line-height:1.6; color:var(--slate-2); flex:1; }
+.work-card.dark .wc-body { color:var(--slate-2); }
+.wc-foot { margin-top:24px; display:flex; justify-content:space-between; align-items:flex-end; }
+.wc-stats { display:flex; gap:26px; flex-wrap:wrap; }
+.wc-stat .sv { font-size:1.7rem; font-weight:800; letter-spacing:-0.03em; line-height:1; color:var(--slate); }
+.work-card.dark .wc-stat .sv { color:var(--clay-deep); }
+.wc-stat .sk { font-family:var(--mono); font-size:0.625rem; color:var(--slate-3); margin-top:5px; text-transform:uppercase; letter-spacing:0.04em; }
+.work-card.dark .wc-stat .sk { color:var(--clay-deep); opacity:0.55; }
+.wc-arrow {
+  width:34px; height:34px; border-radius:50%; border:1px solid var(--sep); color:var(--slate-2);
+  display:flex; align-items:center; justify-content:center; font-size:0.875rem; flex-shrink:0;
+  transition:background 0.2s, color 0.2s, border-color 0.2s, transform 0.3s var(--spring);
+}
+.work-card:hover .wc-arrow { background:var(--slate); color:#fff; border-color:var(--slate); transform:rotate(45deg); }
+.work-card.dark .wc-arrow { border-color:var(--clay); color:var(--clay-deep); }
+.work-card.dark:hover .wc-arrow { background:var(--clay); color:#fff; border-color:var(--clay); }
+
+/* expanded panel */
+.work-panel { display:none; background:var(--ivory-deep); border:1px solid var(--sep); padding:44px 40px; margin-bottom:2px; }
+.work-panel.open { display:block; }
+.panel-cols { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-bottom:32px; }
+@media(max-width:760px){ .panel-cols{ grid-template-columns:1fr; } }
+.panel-col h4 { font-family:var(--mono); font-size:0.625rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--slate-3); margin-bottom:10px; }
+.panel-col p, .panel-col li { font-size:1rem; line-height:1.58; color:var(--slate-2); margin-bottom:8px; }
+.panel-col ul { padding-left:16px; }
+.panel-stats { display:flex; gap:40px; flex-wrap:wrap; padding-top:26px; border-top:1px solid var(--sep); margin-bottom:28px; }
+.ps-stat .sv { font-size:2.2rem; font-weight:800; letter-spacing:-0.03em; line-height:1; color:var(--slate); }
+.ps-stat .sk { font-family:var(--mono); font-size:0.6875rem; color:var(--slate-3); margin-top:7px; text-transform:uppercase; letter-spacing:0.04em; }
+
+/* download buttons */
+.dl-row { display:flex; flex-wrap:wrap; gap:10px; }
+.dl-btn {
+  display:inline-flex; align-items:center; gap:9px;
+  font-size:0.875rem; font-weight:500; color:var(--slate);
+  background:var(--white); border:1px solid var(--sep);
+  border-radius:var(--r-pill); padding:10px 18px 10px 14px;
+  transition:border-color 0.2s, background 0.2s, transform 0.15s var(--spring);
+}
+.dl-btn:hover { border-color:var(--clay); background:var(--clay-soft); transform:translateY(-1px); }
+.dl-btn .dl-icon {
+  width:22px; height:22px; border-radius:6px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--mono); font-size:0.5625rem; font-weight:700; color:#fff;
+}
+.dl-icon.xlsx { background:#1D6F42; }
+.dl-icon.pdf { background:#B23A2E; }
+.dl-icon.ppt { background:#C8401E; }
+.dl-icon.link { background:var(--slate); }
+
+/* ── WRITING REMOVED. Selected metrics strip instead ── */
+#metrics { background:var(--clay-pale); padding:96px 0; border-top:1px solid var(--sep); border-bottom:1px solid var(--sep); }
+.metrics-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; }
+@media(max-width:760px){ .metrics-grid{ grid-template-columns:repeat(2,1fr); } }
+.metric-card { padding:32px 8px; text-align:center; }
+.metric-card .mv { font-size:clamp(2.2rem,4.5vw,3.2rem); font-weight:800; color:var(--clay-deep); letter-spacing:-0.03em; line-height:1; }
+.metric-card .mk { font-family:var(--mono); font-size:0.7rem; color:var(--slate-2); margin-top:12px; letter-spacing:0.04em; text-transform:uppercase; }
+
+/* ── CONTACT ──────────────────────────────────── */
+#contact { background:var(--clay-pale); padding:130px 0; border-top:1px solid var(--sep); }
+.contact-inner { max-width:880px; }
+.contact-inner .section-label { color:var(--clay-deep); opacity:0.7; }
+.contact-inner h2 {
+  font-size:clamp(2.8rem,7vw,4.8rem); letter-spacing:-0.035em; line-height:1.0;
+  color:var(--slate); margin-bottom:30px;
+}
+.contact-inner h2 em { font-family:var(--serif); font-style:italic; font-weight:500; color:var(--clay-deep); }
+.contact-lede { font-size:1.15rem; color:var(--slate-2); max-width:46ch; line-height:1.58; font-weight:400; margin-bottom:50px; letter-spacing:-0.008em; }
+.contact-grid { display:grid; grid-template-columns:repeat(2,1fr); border-top:1px solid var(--sep); }
+@media(max-width:540px){ .contact-grid{ grid-template-columns:1fr; } }
+.contact-cell { padding:26px 0; border-bottom:1px solid var(--sep); padding-right:32px; }
+.contact-cell:nth-child(even) { padding-left:32px; padding-right:0; border-left:1px solid var(--sep); }
+@media(max-width:540px){ .contact-cell:nth-child(even){ padding-left:0; border-left:none; } }
+.contact-cell .lbl { font-family:var(--mono); font-size:0.625rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--clay-deep); opacity:0.55; margin-bottom:10px; }
+.contact-cell a, .contact-cell span { display:block; font-size:1.1rem; color:var(--slate); letter-spacing:-0.01em; }
+.contact-cell a { color:var(--clay-deep); transition:opacity 0.2s; }
+.contact-cell a:hover { opacity:0.7; }
+
+footer { background:var(--ivory-deep); border-top:1px solid var(--sep); padding:32px 0 44px; }
+.foot-inner { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:var(--mono); font-size:0.7rem; color:var(--slate-3); letter-spacing:0.02em; }
+
+/* ── REVEAL ───────────────────────────────────── */
+.reveal { opacity:0; transform:translateY(20px); transition:opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+.reveal.in { opacity:1; transform:none; }
+.rd1{transition-delay:80ms;} .rd2{transition-delay:160ms;} .rd3{transition-delay:240ms;}
+@media(prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} .reveal{opacity:1;transform:none;transition:none;} }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Mathilde Sison</div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Work</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<!-- ── HERO ─────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-eyebrow reveal">Finance / Startups / Investments</div>
+    <h1 class="hero-name reveal rd1">Mathilde Sison</h1>
+    <p class="hero-role reveal rd2">I help high growth companies turn analysis into decisions. Venture diligence, startup FP&amp;A, and the work in between.</p>
+    <div class="hero-social reveal rd3">
+      <a href="https://www.linkedin.com/in/mathildesison" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      <a href="mailto:mesison@calpoly.edu" aria-label="Email">✉</a>
+      <a href="Mathilde-Sison-Resume.pdf" target="_blank" rel="noopener" aria-label="Resume">↓</a>
+    </div>
+  </div>
+
+  <div class="hero-split reveal">
+    <div class="hero-photo-col">
+      <img src="mathilde-photo.jpg" alt="Mathilde Sison">
+    </div>
+    <div class="hero-quote-col">
+      <blockquote>I want to be in the weeds. Figuring out what makes a high growth company tick, and helping it capitalize on it.</blockquote>
+    </div>
+  </div>
+</section>
+
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="ticker-item"><span class="tdot"></span>Defy.vc, $300M fund</div>
+    <div class="ticker-item"><span class="tdot"></span>Shift 5, Series C FP&amp;A</div>
+    <div class="ticker-item"><span class="tdot"></span>Venture capital diligence</div>
+    <div class="ticker-item"><span class="tdot"></span>Romaine Workshop, live tool</div>
+    <div class="ticker-item"><span class="tdot"></span>UPS equity valuation</div>
+    <div class="ticker-item"><span class="tdot"></span>Fixed income, yield curves</div>
+    <div class="ticker-item"><span class="tdot"></span>Cal Poly SLO, Magna Cum Laude</div>
+    <div class="ticker-item"><span class="tdot"></span>AI, infrastructure, logistics</div>
+    <div class="ticker-item"><span class="tdot"></span>NetSuite ERP migration</div>
+    <div class="ticker-item"><span class="tdot"></span>Econometrics, regression</div>
+    <div class="ticker-item"><span class="tdot"></span>Defy.vc, $300M fund</div>
+    <div class="ticker-item"><span class="tdot"></span>Shift 5, Series C FP&amp;A</div>
+    <div class="ticker-item"><span class="tdot"></span>Venture capital diligence</div>
+    <div class="ticker-item"><span class="tdot"></span>Romaine Workshop, live tool</div>
+    <div class="ticker-item"><span class="tdot"></span>UPS equity valuation</div>
+    <div class="ticker-item"><span class="tdot"></span>Fixed income, yield curves</div>
+    <div class="ticker-item"><span class="tdot"></span>Cal Poly SLO, Magna Cum Laude</div>
+    <div class="ticker-item"><span class="tdot"></span>AI, infrastructure, logistics</div>
+    <div class="ticker-item"><span class="tdot"></span>NetSuite ERP migration</div>
+    <div class="ticker-item"><span class="tdot"></span>Econometrics, regression</div>
+  </div>
+</div>
+
+<!-- ── ABOUT ────────────────────────────────── -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <div class="section-label">About</div>
+        <h2>The <span class="circle-word">person<svg viewBox="0 0 200 60" fill="none"><path d="M8 38 Q 12 8, 100 6 Q 188 4, 192 30 Q 195 52, 100 54 Q 10 56, 8 32" stroke="#1A8754" stroke-width="2.5" stroke-linecap="round"/></svg></span> behind the work.</h2>
+        <div style="height:32px"></div>
+        <div class="tag-label">Personal</div>
+        <div class="tags">
+          <span class="tag">Family</span>
+          <span class="tag">Fitness</span>
+          <span class="tag">Travel</span>
+          <span class="tag">Cal Poly SLO</span>
+          <span class="tag">SF Bay Area</span>
+        </div>
+      </div>
+      <div class="about-right">
+        <p class="reveal">I was born and raised in Menlo Park, to parents who were each one of nine kids. Independence has always been in my blood. Growing up, I was competitive before I knew what competition meant: playing basketball from age five, going to the championship in eighth grade, breaking the 4x100 relay record at our track championship, then carrying that intensity into field hockey and lacrosse in high school.</p>
+
+        <p class="reveal">When I got to Cal Poly, I channeled that same drive into figuring out what actually sparked my curiosity. I found my people in the Financial Management Association and went to New York to visit leading investment banks, venture firms, and the NYSE. Banking didn't feel like me, but the one VC stop on that trip was something I couldn't stop thinking about. The technology. The strategy. The possibility of it.</p>
+
+        <p class="reveal">That stop turned into a summer at Defy.vc, a $300M oversubscribed early stage fund, working directly with the Managing and Founding Partner across the full investment lifecycle. I wrote 10 investment memos spanning AI, infrastructure, logistics, construction tech, and CPG, each one built from a full competitive landscape and return model, not a template. One of them, on Aztra Labs, came together in 48 hours and ended up distributed firm wide and to co investors at partner firms.</p>
+
+        <p class="reveal">Writing memo after memo, I kept hitting the same bottleneck: the research process was nearly identical every time, but I was rebuilding it from scratch. So I built an AI agent to handle the repeatable parts of diligence, sourcing comparables, structuring the first pass of a competitive landscape, so I could spend my time on the judgment calls that actually needed a person. It is the kind of problem I want to keep solving: not just doing the analysis, but building the system that makes the analysis better.</p>
+
+        <div class="pull-quote reveal">
+          <blockquote>I found myself so obsessed with each company I was covering that I wanted to join every single one.</blockquote>
+          <cite>On writing venture memos at Defy.vc</cite>
+        </div>
+
+        <p class="reveal">Before that summer, I got my foot in the door at Shift 5, a defense tech startup, doing FP&amp;A work that went directly to the CFO and building the financial systems a company needs before it can raise its next round. Between the two, I have sat on both sides of the table now, the fund deciding where to invest, and the company trying to earn that investment.</p>
+        <p class="reveal">What I want next is to stop moving company to company and go deep on one. I want to be in the weeds, figuring out what makes a high growth company tick, and helping it capitalize on it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cred-bar">
+  <div class="cred-grid">
+    <div class="cred-cell reveal"><div class="ck">Institution</div><div class="cv">Cal Poly SLO</div></div>
+    <div class="cred-cell reveal rd1"><div class="ck">Graduating</div><div class="cv">June 2026</div></div>
+    <div class="cred-cell reveal rd2"><div class="ck">GPA</div><div class="cv accent">3.70</div></div>
+    <div class="cred-cell reveal rd3"><div class="ck">Honors</div><div class="cv">Magna Cum Laude</div></div>
+    <div class="cred-cell reveal"><div class="ck">Focus</div><div class="cv">VC, FP&amp;A, Research</div></div>
+    <div class="cred-cell reveal rd1"><div class="ck">Looking for</div><div class="cv">High growth tech</div></div>
+    <div class="cred-cell reveal rd2"><div class="ck">Based</div><div class="cv">San Francisco, CA</div></div>
+    <div class="cred-cell reveal rd3"><div class="ck">Available</div><div class="cv accent">Summer 2026</div></div>
+  </div>
+</div>
+
+<!-- ── EXPERIENCE ───────────────────────────── -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-label reveal">Experience</div>
+    <div class="xp-list">
+
+      <div class="xp-item reveal">
+        <div class="xp-meta"><div class="org">Defy.vc</div><span class="dt">Jun to Aug 2025</span><span class="lc">San Francisco, CA</span></div>
+        <div class="xp-body">
+          <div class="role">Venture Capital Intern</div>
+          <ul>
+            <li>Worked directly with the Managing and Founding Partner at a $300M oversubscribed early stage fund across diligence, financial modeling, and portfolio support.</li>
+            <li>Authored 10 investment memos spanning AI, infrastructure, logistics, construction tech, and CPG, each with competitive landscape analysis and return/exit modeling.</li>
+            <li>Delivered a full memo on Aztra Labs under a 48 hour deadline. It was distributed firm wide and to co investors at partner firms.</li>
+            <li>Evaluated seed and Series A companies including CRED, Jona Health, Amby Tech, Rivet Work, SENVO, Giadzy, and Cover/RE.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="xp-item reveal">
+        <div class="xp-meta"><div class="org">Shift 5, Inc.</div><span class="dt">Jun to Aug 2024</span><span class="lc">SF Bay Area</span></div>
+        <div class="xp-body">
+          <div class="role">FP&amp;A Intern</div>
+          <ul>
+            <li>Built the company's first customer level P&amp;L, reporting directly to the CFO. The outputs informed pricing strategy, deal structuring, and investor materials ahead of Series C.</li>
+            <li>Updated the 3 year financial model, including burn schedule, income statement, balance sheet, and cash flow.</li>
+            <li>Ran 36 deal profitability analyses across the customer base using ACV, revenue, cost, and labor metrics.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="xp-item reveal">
+        <div class="xp-meta"><div class="org">Shift 5, Inc.</div><span class="dt">Mar to Jun 2024</span><span class="lc">SF Bay Area</span></div>
+        <div class="xp-body">
+          <div class="role">Financial Risk and Inventory Contractor</div>
+          <ul>
+            <li>Led the full migration of legacy inventory data into NetSuite ERP, enabling reliable historical analysis across the finance team.</li>
+            <li>Designed and implemented automated invoice processing workflows for hundreds of supplier accounts, eliminating manual reconciliation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="xp-item reveal">
+        <div class="xp-meta"><div class="org">Investment Banking Society</div><span class="dt">Feb 2023 to Present</span><span class="lc">Cal Poly SLO</span></div>
+        <div class="xp-body">
+          <div class="role">Member, NYC Immersion Cohort</div>
+          <ul>
+            <li>Selected as one of nine students for the New York immersion trip.</li>
+            <li>Completed Banking 101: comps, precedent transactions, LBO, DCF, M&amp;A premiums, and future share price analysis.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SELECTED WORK — interactive ─────────────── -->
+<section id="work">
+  <div class="wrap-wide">
+    <div class="wrap" style="padding-bottom:48px;">
+      <div class="section-label reveal">Selected work</div>
+    </div>
+
+    <div class="work-grid reveal">
+      <button class="work-card" onclick="togglePanel('p-vc')">
+        <div class="wc-visual" id="viz-memo"></div>
+        <div class="wc-body-wrap">
+          <div class="wc-label">Defy.vc, Venture Capital</div>
+          <div class="wc-title">An investment memo in 48 hours</div>
+          <div class="wc-body">A complete diligence memo on Aztra Labs. Competitive landscape, return modeling, and a firm recommendation, distributed company wide and to co investors.</div>
+          <div class="wc-foot">
+            <div class="wc-stats">
+              <div class="wc-stat"><div class="sv">48h</div><div class="sk">Turnaround</div></div>
+              <div class="wc-stat"><div class="sv">10</div><div class="sk">Memos total</div></div>
+            </div>
+            <div class="wc-arrow">↗</div>
+          </div>
+        </div>
+      </button>
+
+      <button class="work-card dark" onclick="togglePanel('p-romaine')">
+        <div class="wc-visual" id="viz-romaine"></div>
+        <div class="wc-body-wrap">
+          <div class="wc-label">Entrepreneurial Finance, Live build</div>
+          <div class="wc-title">A financial system for a construction firm</div>
+          <div class="wc-body">A design builder needed a way to run his business, not just build buildings. I built the job estimator, the trackers, and the cash flow model he runs it on today.</div>
+          <div class="wc-foot">
+            <div class="wc-stats">
+              <div class="wc-stat"><div class="sv">12</div><div class="sk">Modules</div></div>
+              <div class="wc-stat"><div class="sv">Live</div><div class="sk">Shipped</div></div>
+            </div>
+            <div class="wc-arrow">↗</div>
+          </div>
+        </div>
+      </button>
+    </div>
+
+    <div class="work-panel" id="p-vc">
+      <div class="panel-cols">
+        <div class="panel-col"><h4>Context</h4><p>Aztra Labs surfaced in deal flow with a fast moving round. The partner needed a complete investment view in 48 hours to decide whether to engage.</p></div>
+        <div class="panel-col"><h4>What I did</h4><ul><li>Mapped the competitive landscape and the company's wedge into it.</li><li>Built return and exit modeling under multiple scenarios.</li><li>Wrote the memo end to end: thesis, risks, and recommendation.</li></ul></div>
+        <div class="panel-col"><h4>Outcome</h4><p>The memo was distributed firm wide and to co investors at partner firms, and used as a primary diligence reference for the opportunity.</p></div>
+      </div>
+      <div class="panel-stats">
+        <div class="ps-stat"><div class="sv">48h</div><div class="sk">Deadline</div></div>
+        <div class="ps-stat"><div class="sv">10</div><div class="sk">Memos authored</div></div>
+        <div class="ps-stat"><div class="sv">Firm wide</div><div class="sk">Distribution</div></div>
+      </div>
+      <div class="dl-row">
+        <a class="dl-btn" href="Mathilde-Sison-Investment-Memo-Sample.pdf" target="_blank" rel="noopener"><span class="dl-icon pdf">PDF</span>What I learned writing 5 memos</a>
+      </div>
+    </div>
+
+    <div class="work-panel" id="p-romaine">
+      <div class="panel-cols">
+        <div class="panel-col"><h4>Context</h4><p>A construction design builder launching a consulting arm could build, but had no system to run the business, track costs, or see his cash position.</p></div>
+        <div class="panel-col"><h4>What I built</h4><ul><li>A CSI division job estimator priced off real SLO County benchmarks, from $300 to $1,600 per square foot.</li><li>Linked trackers for projects, expenses, assets with straight line and double declining depreciation, and liabilities.</li><li>A cash flow module with a 3 month forward projection.</li><li>An editable EBITDA multiple equity estimate so he can tune it himself.</li></ul></div>
+        <div class="panel-col"><h4>Outcome</h4><p>A working system the owner runs his business on today, not a one time deliverable.</p></div>
+      </div>
+      <div class="panel-stats">
+        <div class="ps-stat"><div class="sv">12</div><div class="sk">Connected modules</div></div>
+        <div class="ps-stat"><div class="sv">Live</div><div class="sk">Shipped to client</div></div>
+      </div>
+      <div class="dl-row">
+        <a class="dl-btn" href="https://smct23.github.io/Romaine-Workshop/" target="_blank" rel="noopener"><span class="dl-icon link">↗</span>Open the live dashboard</a>
+      </div>
+    </div>
+
+    <div class="work-grid reveal">
+      <button class="work-card full" onclick="togglePanel('p-pl')" style="grid-column:1/-1;">
+        <div class="wc-visual" id="viz-pl" style="height:200px;"></div>
+        <div class="wc-body-wrap">
+          <div class="wc-label">Shift 5, FP&amp;A, Reporting to the CFO</div>
+          <div class="wc-title">Building a company's first customer level P&amp;L</div>
+          <div class="wc-body">No customer level profitability view existed ahead of a Series C raise. I built it: 36 deal analyses, a 3 year model refresh, and reporting that went directly into investor materials.</div>
+          <div class="wc-foot">
+            <div class="wc-stats">
+              <div class="wc-stat"><div class="sv">36</div><div class="sk">Deals analyzed</div></div>
+              <div class="wc-stat"><div class="sv">1st</div><div class="sk">Customer P&amp;L</div></div>
+            </div>
+            <div class="wc-arrow">↗</div>
+          </div>
+        </div>
+      </button>
+    </div>
+    <div class="work-panel" id="p-pl">
+      <div class="panel-cols">
+        <div class="panel-col"><h4>Context</h4><p>No customer level view of profitability existed ahead of a Series C raise, leaving pricing and deal structuring without an evidence base.</p></div>
+        <div class="panel-col"><h4>What I did</h4><ul><li>Designed the first customer P&amp;L, reporting directly to the CFO.</li><li>Ran 36 deal profitability analyses using ACV, revenue, cost, and labor metrics.</li><li>Refreshed the 3 year model: burn, income statement, balance sheet, cash flow.</li></ul></div>
+        <div class="panel-col"><h4>Outcome</h4><p>Outputs informed pricing strategy, deal structuring decisions, and investor materials used in the Series C fundraising process.</p></div>
+      </div>
+      <div class="panel-stats">
+        <div class="ps-stat"><div class="sv">36</div><div class="sk">Deals analyzed</div></div>
+        <div class="ps-stat"><div class="sv">1st</div><div class="sk">Customer P&amp;L at the company</div></div>
+        <div class="ps-stat"><div class="sv">Series C</div><div class="sk">Fundraise supported</div></div>
+      </div>
+    </div>
+
+    <div class="work-grid reveal">
+      <button class="work-card" onclick="togglePanel('p-ups')">
+        <div class="wc-visual" id="viz-ups"></div>
+        <div class="wc-body-wrap">
+          <div class="wc-label">BUS 438, NYSE: UPS</div>
+          <div class="wc-title">Valuing UPS over a full quarter</div>
+          <div class="wc-body">DCF, APV, and a 40 plus company comp set on a $91B revenue logistics company. The APV landed within 3.5% of market price, and terminal growth turned out to be the dominant driver.</div>
+          <div class="wc-foot">
+            <div class="wc-stats">
+              <div class="wc-stat"><div class="sv">40+</div><div class="sk">Comps</div></div>
+              <div class="wc-stat"><div class="sv">3</div><div class="sk">Methods</div></div>
+            </div>
+            <div class="wc-arrow">↗</div>
+          </div>
+        </div>
+      </button>
+
+      <button class="work-card" onclick="togglePanel('p-fi')">
+        <div class="wc-visual" id="viz-fi"></div>
+        <div class="wc-body-wrap">
+          <div class="wc-label">FIN 439, Fixed Income</div>
+          <div class="wc-title">Pricing bonds and building yield curves</div>
+          <div class="wc-body">I bootstrapped a 10 year zero coupon curve, built Apple's issuer credit curve from real bond data, and made buy or sell calls from where the model and the market disagreed.</div>
+          <div class="wc-foot">
+            <div class="wc-stats">
+              <div class="wc-stat"><div class="sv">10yr</div><div class="sk">Spot curve</div></div>
+              <div class="wc-stat"><div class="sv">CUSIP</div><div class="sk">Real data</div></div>
+            </div>
+            <div class="wc-arrow">↗</div>
+          </div>
+        </div>
+      </button>
+    </div>
+
+    <div class="work-panel" id="p-ups">
+      <div class="panel-cols">
+        <div class="panel-col"><h4>Context</h4><p>A quarter long valuation of UPS, a roughly $91B revenue global logistics company, from industry analysis to a defensible view on the stock.</p></div>
+        <div class="panel-col"><h4>What I did</h4><ul><li>Built historical and projected financials from 2020 to 2029.</li><li>Estimated a bottom up beta and ran both DCF and APV intrinsic valuations.</li><li>Benchmarked over 40 global logistics comparables with a multiples regression.</li><li>Stress tested the value across risk free rate, beta, cost of debt, and terminal growth.</li></ul></div>
+        <div class="panel-col"><h4>Findings</h4><p>The APV came within about 3.5% of market price. Sensitivity analysis showed terminal growth was the dominant driver across every scenario.</p></div>
+      </div>
+      <div class="panel-stats">
+        <div class="ps-stat"><div class="sv">40+</div><div class="sk">Comparables</div></div>
+        <div class="ps-stat"><div class="sv">~3.5%</div><div class="sk">APV vs market</div></div>
+        <div class="ps-stat"><div class="sv">10yr</div><div class="sk">Model horizon</div></div>
+      </div>
+      <div class="dl-row">
+        <a class="dl-btn" href="Mathilde-Sison-UPS-Valuation.xlsx" download><span class="dl-icon xlsx">XLS</span>Download the full model</a>
+      </div>
+    </div>
+
+    <div class="work-panel" id="p-fi">
+      <div class="panel-cols">
+        <div class="panel-col"><h4>Context</h4><p>A set of fixed income workshops applied to live instruments: US Treasuries, a $1B Apple bond maturing in 2043, and consumer credit products.</p></div>
+        <div class="panel-col"><h4>What I did</h4><ul><li>Bootstrapped a 10 year zero coupon spot curve.</li><li>Built Apple's issuer credit curve from its outstanding bonds.</li><li>Compared model value to market price to make buy or sell calls.</li><li>Modeled amortization and APR spreads against the prime and Treasury curves.</li></ul></div>
+        <div class="panel-col"><h4>So what</h4><p>Where intrinsic value diverged from the quoted price, I could name the mispricing and the trade. That is the core move behind any rates or credit decision.</p></div>
+      </div>
+      <div class="panel-stats">
+        <div class="ps-stat"><div class="sv">10yr</div><div class="sk">Spot curve bootstrapped</div></div>
+        <div class="ps-stat"><div class="sv">UST + Corp</div><div class="sk">Instruments priced</div></div>
+      </div>
+      <div class="dl-row">
+        <a class="dl-btn" href="Mathilde-Sison-Fixed-Income-Workshop1.xlsx" download><span class="dl-icon xlsx">XLS</span>Workshop 1, Treasury curve</a>
+        <a class="dl-btn" href="Mathilde-Sison-Fixed-Income-Workshop2.xlsx" download><span class="dl-icon xlsx">XLS</span>Workshop 2, credit curve</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── METRICS STRIP ─────────────────────────── -->
+<section id="metrics" style="padding-top:0; padding-bottom:0;">
+  <div class="metrics-grid">
+    <div class="metric-card reveal"><div class="mv">10</div><div class="mk">Investment memos written</div></div>
+    <div class="metric-card reveal rd1"><div class="mv">36</div><div class="mk">Deal profitability analyses</div></div>
+    <div class="metric-card reveal rd2"><div class="mv">$300M</div><div class="mk">Fund evaluated companies for</div></div>
+    <div class="metric-card reveal rd3"><div class="mv">16,001</div><div class="mk">Observations in my regression study</div></div>
+  </div>
+</section>
+
+<!-- ── CONTACT ──────────────────────────────── -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="section-label reveal">Get in touch</div>
+      <h2 class="reveal">Let's <em>talk.</em></h2>
+      <p class="contact-lede reveal">I'm looking for high growth, high impact technology roles across operations, research, and investments. Email is the fastest way to reach me.</p>
+      <div class="contact-grid reveal">
+        <div class="contact-cell"><div class="lbl">Email</div><a href="mailto:mesison@calpoly.edu">mesison@calpoly.edu</a></div>
+        <div class="contact-cell"><div class="lbl">LinkedIn</div><a href="https://www.linkedin.com/in/mathildesison" target="_blank" rel="noopener">/in/mathildesison</a></div>
+        <div class="contact-cell"><div class="lbl">Resume</div><a href="Mathilde-Sison-Resume.pdf" target="_blank">Download PDF</a></div>
+        <div class="contact-cell"><div class="lbl">Based in</div><span>San Francisco, CA</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>© 2026 Mathilde Sison</span>
+    <span>San Francisco. Available Summer 2026.</span>
+  </div>
+</footer>
+
+<script>
+/* reveal on scroll */
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+  },{threshold:0.08,rootMargin:'0px 0px -24px 0px'});
+  els.forEach(function(e){io.observe(e);});
+})();
+
+window.addEventListener('load',function(){
+  document.querySelectorAll('.hero .reveal').forEach(function(el,i){
+    setTimeout(function(){el.classList.add('in');},i*130+250);
+  });
+});
+
+function togglePanel(id){
+  var panel=document.getElementById(id);
+  if(!panel)return;
+  var wasOpen=panel.classList.contains('open');
+  document.querySelectorAll('.work-panel.open').forEach(function(p){p.classList.remove('open');});
+  if(!wasOpen){
+    panel.classList.add('open');
+    setTimeout(function(){panel.scrollIntoView({behavior:'smooth',block:'nearest'});},60);
+  }
+}
+
+window.addEventListener('scroll',function(){
+  var nav=document.querySelector('header.nav');
+  nav.style.boxShadow=window.scrollY>40?'0 1px 20px rgba(0,0,0,0.06)':'none';
+},{passive:true});
+
+/* ── Interactive SVG visuals for work cards ───── */
+function svgEl(tag,attrs){
+  var e=document.createElementNS('http://www.w3.org/2000/svg',tag);
+  for(var k in attrs){ e.setAttribute(k,attrs[k]); }
+  return e;
+}
+function makeSVG(w,h){
+  var s=svgEl('svg',{viewBox:'0 0 '+w+' '+h,preserveAspectRatio:'none'});
+  return s;
+}
+
+/* 1. Memo turnaround: animated countdown arc, 48h */
+(function(){
+  var host=document.getElementById('viz-memo'); if(!host) return;
+  var W=400,H=180;
+  var s=makeSVG(W,H);
+  var cx=200,cy=92,r=58;
+  var bg=svgEl('circle',{cx:cx,cy:cy,r:r,fill:'none',stroke:'#E7E2D6','stroke-width':10});
+  s.appendChild(bg);
+  var circumference=2*Math.PI*r;
+  var arc=svgEl('circle',{cx:cx,cy:cy,r:r,fill:'none',stroke:'#1A8754','stroke-width':10,
+    'stroke-dasharray':circumference,'stroke-dashoffset':circumference,'stroke-linecap':'round',
+    transform:'rotate(-90 '+cx+' '+cy+')'});
+  s.appendChild(arc);
+  var label=svgEl('text',{x:cx,y:cy-4,'text-anchor':'middle','font-family':'IBM Plex Mono, monospace','font-size':'30','font-weight':'700',fill:'#141413'});
+  label.textContent='48h';
+  s.appendChild(label);
+  var sub=svgEl('text',{x:cx,y:cy+20,'text-anchor':'middle','font-family':'IBM Plex Mono, monospace','font-size':'10',fill:'#9B9A95','letter-spacing':'1'});
+  sub.textContent='DEADLINE';
+  s.appendChild(sub);
+  host.appendChild(s);
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        arc.style.transition='stroke-dashoffset 1.4s cubic-bezier(0.25,0.46,0.45,0.94)';
+        requestAnimationFrame(function(){ arc.setAttribute('stroke-dashoffset', circumference*0.04); });
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:0.4});
+  io.observe(host);
+})();
+
+/* 2. Romaine: animated bar chart, modules connected */
+(function(){
+  var host=document.getElementById('viz-romaine'); if(!host) return;
+  var W=400,H=180;
+  var s=makeSVG(W,H);
+  var bars=[
+    {x:40, h:60, label:'Jobs'},
+    {x:90, h:95, label:'Tracker'},
+    {x:140,h:42, label:'Assets'},
+    {x:190,h:80, label:'Liab.'},
+    {x:240,h:110,label:'Cash'},
+    {x:290,h:65, label:'Equity'},
+  ];
+  var base=150;
+  bars.forEach(function(b,i){
+    var rect=svgEl('rect',{x:b.x,y:base,width:34,height:0,rx:4,fill:'#1A8754'});
+    s.appendChild(rect);
+    var lbl=svgEl('text',{x:b.x+17,y:168,'text-anchor':'middle','font-family':'IBM Plex Mono, monospace','font-size':'8.5',fill:'#126B41'});
+    lbl.textContent=b.label;
+    s.appendChild(lbl);
+    setTimeout(function(){
+      rect.style.transition='all 0.7s cubic-bezier(0.34,1.56,0.64,1)';
+    },0);
+    rect._target=b.h;
+    rect._base=base;
+  });
+  host.appendChild(s);
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        var rects=s.querySelectorAll('rect');
+        rects.forEach(function(r,i){
+          setTimeout(function(){
+            r.setAttribute('y', r._base - r._target);
+            r.setAttribute('height', r._target);
+          }, i*70);
+        });
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:0.4});
+  io.observe(host);
+})();
+
+/* 3. P&L: line chart, deal profitability scatter */
+(function(){
+  var host=document.getElementById('viz-pl'); if(!host) return;
+  var W=900,H=200;
+  var s=makeSVG(W,H);
+  s.setAttribute('preserveAspectRatio','none');
+  // baseline grid
+  for(var gy=40; gy<200; gy+=40){
+    var line=svgEl('line',{x1:0,y1:gy,x2:W,y2:gy,stroke:'#E7E2D6','stroke-width':1});
+    s.appendChild(line);
+  }
+  // scatter of 36 deals, profitability
+  var pts=[];
+  for(var i=0;i<36;i++){
+    var x=20+i*((W-40)/36);
+    var y=160 - Math.sin(i*0.45)*55 - (i*0.9) + (Math.random()*18-9);
+    pts.push([x,Math.max(20,Math.min(180,y))]);
+  }
+  var path='M'+pts.map(function(p){return p[0]+','+p[1];}).join(' L');
+  var line=svgEl('path',{d:path,fill:'none',stroke:'#1A8754','stroke-width':2.5,'stroke-linecap':'round','stroke-linejoin':'round'});
+  var len=1400;
+  line.setAttribute('stroke-dasharray',len);
+  line.setAttribute('stroke-dashoffset',len);
+  s.appendChild(line);
+  pts.forEach(function(p,i){
+    var c=svgEl('circle',{cx:p[0],cy:p[1],r:0,fill:'#141413'});
+    s.appendChild(c);
+    c._r = (i%6===0)?4:2.2;
+  });
+  host.appendChild(s);
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        line.style.transition='stroke-dashoffset 1.8s cubic-bezier(0.25,0.46,0.45,0.94)';
+        requestAnimationFrame(function(){ line.setAttribute('stroke-dashoffset','0'); });
+        s.querySelectorAll('circle').forEach(function(c,i){
+          setTimeout(function(){
+            c.style.transition='r 0.4s var(--spring, ease)';
+            c.setAttribute('r', c._r);
+          }, 200+i*40);
+        });
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:0.3});
+  io.observe(host);
+})();
+
+/* 4. UPS: bar comparison, DCF vs APV vs Market */
+(function(){
+  var host=document.getElementById('viz-ups'); if(!host) return;
+  var W=400,H=180;
+  var s=makeSVG(W,H);
+  var data=[
+    {label:'DCF', val:0.72, color:'#C9C2B2'},
+    {label:'APV', val:0.97, color:'#1A8754'},
+    {label:'MKT', val:1.00, color:'#141413'},
+  ];
+  var base=150, maxH=100, bw=56, gap=40, startX=46;
+  data.forEach(function(d,i){
+    var x=startX+i*(bw+gap);
+    var targetH=d.val*maxH;
+    var rect=svgEl('rect',{x:x,y:base,width:bw,height:0,rx:5,fill:d.color});
+    s.appendChild(rect);
+    var lbl=svgEl('text',{x:x+bw/2,y:168,'text-anchor':'middle','font-family':'IBM Plex Mono, monospace','font-size':'10',fill:'#9B9A95'});
+    lbl.textContent=d.label;
+    s.appendChild(lbl);
+    rect._target=targetH; rect._base=base;
+  });
+  host.appendChild(s);
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        var rects=s.querySelectorAll('rect');
+        rects.forEach(function(r,i){
+          setTimeout(function(){
+            r.style.transition='all 0.8s cubic-bezier(0.34,1.56,0.64,1)';
+            r.setAttribute('y', r._base - r._target);
+            r.setAttribute('height', r._target);
+          }, i*120);
+        });
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:0.4});
+  io.observe(host);
+})();
+
+/* 5. Fixed income: yield curve line */
+(function(){
+  var host=document.getElementById('viz-fi'); if(!host) return;
+  var W=400,H=180;
+  var s=makeSVG(W,H);
+  for(var gy=30; gy<170; gy+=35){
+    s.appendChild(svgEl('line',{x1:30,y1:gy,x2:370,y2:gy,stroke:'#E7E2D6','stroke-width':1}));
+  }
+  var pts=[[30,140],[80,118],[130,98],[180,82],[230,68],[280,58],[330,50],[370,46]];
+  var path='M'+pts.map(function(p){return p[0]+','+p[1];}).join(' L');
+  var line=svgEl('path',{d:path,fill:'none',stroke:'#1A8754','stroke-width':3,'stroke-linecap':'round','stroke-linejoin':'round'});
+  var len=420;
+  line.setAttribute('stroke-dasharray',len);
+  line.setAttribute('stroke-dashoffset',len);
+  s.appendChild(line);
+  pts.forEach(function(p){
+    var c=svgEl('circle',{cx:p[0],cy:p[1],r:0,fill:'#141413'});
+    s.appendChild(c);
+  });
+  var xlabel=svgEl('text',{x:200,y:168,'text-anchor':'middle','font-family':'IBM Plex Mono, monospace','font-size':'9',fill:'#9B9A95','letter-spacing':'1'});
+  xlabel.textContent='1Y  →  10Y MATURITY';
+  s.appendChild(xlabel);
+  host.appendChild(s);
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        line.style.transition='stroke-dashoffset 1.4s cubic-bezier(0.25,0.46,0.45,0.94)';
+        requestAnimationFrame(function(){ line.setAttribute('stroke-dashoffset','0'); });
+        s.querySelectorAll('circle').forEach(function(c,i){
+          setTimeout(function(){ c.setAttribute('r',3.5); c.style.transition='r 0.3s ease'; },i*100+300);
+        });
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:0.4});
+  io.observe(host);
+})();
+</script>
+</body>
+</html>
